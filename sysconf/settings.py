@@ -55,7 +55,7 @@ ROOT_URLCONF = 'sysconf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+     os.path.join(BASE_DIR, "static"),
+]
+
+
+#
+ES_URL = 'http://127.0.0.1:9200'
+
+DANMU_INDEX_NAME = "test3-*"

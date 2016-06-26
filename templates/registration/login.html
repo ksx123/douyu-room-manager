@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入</title>
+</head>
+<body>
+
+<form method="post" style="width: 300px;margin: 150px auto;">
+    <h1>登入:</h1>
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="用户名"><br>
+    <input type="password" name="password" placeholder="密码"><br>
+    <button>Login</button>
+</form>
+
+</body>
+</html>

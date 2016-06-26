@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Manager</title>
+    {% load staticfiles %}
+    <script src="{% static "node_modules/angular/angular.js" %}"></script>
+    <script src="{% static "app/app.js" %}"></script>
+</head>
+<body ng-app="RoomManager">
+<div>当前登入: {{ user }}  <a style="float: right" href="accounts/logout?next=/">退出</a></div>
+<div ng-controller="home">
+    <h1>输入要查询发言的ID:</h1>
+    <input type="text" placeholder="ID" ng-model="input.name">
+    <button ng-click="search()">查询</button>
+    <div>
+        <h1>结果:<a href="javascript:(0)" style="font-size: 14px" ng-click="switchSort()">切换升/降序</a></h1>
+        <table>
+            <tr><td>时间</td><td>等级</td><td>ID</td><td>内容</td></tr>
+            <tr ng-repeat="d in results">
+                <td ng-bind="d.time"></td>
+                <td ng-bind="d.level">></td>
+                <td ng-bind="d.nn"></td>
+                <td ng-bind="d.txt"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
