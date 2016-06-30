@@ -35,7 +35,7 @@ angular.module("RoomManager", [])
             console.log("name", $scope.input.bkName);
             console.log("operator", $scope.input.operator);
             var url = "/api/getBlackres?sort="+ $scope.bkSort;
-            if(!!$scope.input.bkNameda){
+            if(!!$scope.input.bkName){
                 url += "&name=" + $scope.input.bkName
             }
             if(!!$scope.input.operator){
