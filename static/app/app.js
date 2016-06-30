@@ -61,7 +61,7 @@ angular.module("RoomManager", [])
                console.log(arguments);
                 $scope.bkResults = data;
                 $scope.bkResults.forEach(function(e){
-                    e.endtime = new Date(e.endtime).Format("yyyy-MM-dd hh:mm:ss")
+                    e.endtime = new Date(+e.endtime * 1000).Format("yyyy-MM-dd hh:mm:ss")
                 });
             });
         }
