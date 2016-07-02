@@ -4,43 +4,31 @@
     <meta charset="UTF-8">
     <title>Room Manager</title>
     {% load staticfiles %}
-    <script src="{% static "node_modules/angular/angular.js" %}"></script>
+    <script src="{% static "node_modules/jquery/dist/jquery.min.js" %}"></script>
+    <script src="{% static "node_modules/angular/angular.min.js" %}"></script>
+    <script src="{% static "node_modules/angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+    <script src="{% static "node_modules/bootstrap/dist/js/bootstrap.min.js" %}"></script>
     <script src="{% static "app/app.js" %}"></script>
+    <link href="{% static "node_modules/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <script type="application/javascript">
+        window.user = {
+                    "username": '{{ user.username }}'
+                };
+{#<div>当前登入: {{ user }}  <a style="float: right" href="accounts/logout?next=/">退出</a></div>#}
+    </script>
 </head>
 <body ng-app="RoomManager">
-<div>当前登入: {{ user }}  <a style="float: right" href="accounts/logout?next=/">退出</a></div>
-<div ng-controller="home">
-    <div style="float: left">
-        <h1>输入要查询发言的ID:</h1>
-        <input type="text" placeholder="ID" ng-model="input.name">
-        <button ng-click="search()">查询</button>
-        <h1>结果:<a href="javascript:(0)" style="font-size: 14px" ng-click="switchSort()">切换升/降序</a></h1>
-        <table>
-            <tr><td>时间</td><td>等级</td><td>ID</td><td>内容</td></tr>
-            <tr ng-repeat="d in results">
-                <td ng-bind="d.time"></td>
-                <td ng-bind="d.level">></td>
-                <td ng-bind="d.nn"></td>
-                <td ng-bind="d.txt"></td>
-            </tr>
-        </table>
-    </div>
-     <div style="float: left">
-        <h1>输入要被封或操作人的ID:</h1>
-        <input type="text" placeholder="被封ID" ng-model="input.bkName">
-         <input type="text" placeholder="操作人ID" ng-model="input.operator">
-        <button ng-click="searchBlackers()">查询</button>
-        <h1>结果:<a href="javascript:(0)" style="font-size: 14px" ng-click="switchBKSort()">切换升/降序</a></h1>
-        <table>
-            <tr><td>时间</td><td>ID</td><td>有效期</td><td>操作人</td></tr>
-            <tr ng-click="setectBK(d)" ng-repeat="d in bkResults">
-                <td ng-bind="d.time"></td>
-                <td ng-bind="d.dnic">></td>
-                <td ng-bind="d.endtime"></td>
-                <td ng-bind="d.snic"></td>
-            </tr>
-        </table>
-    </div>
+
+<div class="header">
+    <div ng-include="'/static/views/navbar.html'"></div>
 </div>
+
+<div ui-view></div>
+{#<div class="footer">#}
+{#    <div class="container">#}
+{#        <p style="text-align: center"><span class="glyphicon glyphicon-heart"></span> from the LoveNian team</p>#}
+{#    </div>#}
+{#</div>#}
+{#    <script src="/static/bower_components/requirejs/require.js" defer async="true" data-main="/static/scripts/main.js"></script>#}
 </body>
 </html>

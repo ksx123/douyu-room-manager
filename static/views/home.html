@@ -1,0 +1,80 @@
+<div class="container">
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>发言查询</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="msgName">输入要查询发言的ID:</label>
+                    <input type="text" class="form-control" id="msgName" placeholder="ID"
+                           ng-model="input.name">
+                </div>
+                <button type="submit" class="pull-right btn btn-primary" ng-click="search()">查询</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>结果:<a href="javascript:(0)" style="font-size: 14px" ng-click="switchSort()">切换升/降序</a></h4>
+                <table class="table">
+                    <tr>
+                        <td>时间</td>
+                        <td>等级</td>
+                        <td>ID</td>
+                        <td>内容</td>
+                    </tr>
+                    <tr ng-repeat="d in results">
+                        <td ng-bind="d.time"></td>
+                        <td ng-bind="d.level">></td>
+                        <td ng-bind="d.nn"></td>
+                        <td ng-bind="d.txt"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h1>查询禁言</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="bkName">输入被封人或操作人的ID:</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="bkName" placeholder="被封ID"
+                           ng-model="input.bkName">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="operator" placeholder="操作人ID"
+                           ng-model="input.operator">
+                        </div>
+                    </div>
+
+                </div>
+                <button type="submit" class="pull-right btn btn-primary" ng-click="searchBlackers()">查询</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>结果:<a href="javascript:(0)" style="font-size: 14px" ng-click="switchBKSort()">切换升/降序</a></h4>
+                <table class="table">
+                    <tr>
+                        <td>时间</td>
+                        <td>ID</td>
+                        <td>有效期</td>
+                        <td>操作人</td>
+                    </tr>
+                    <tr ng-click="setectBK(d)" ng-repeat="d in bkResults">
+                        <td ng-bind="d.time"></td>
+                        <td ng-bind="d.dnic">></td>
+                        <td ng-bind="d.endtime"></td>
+                        <td ng-bind="d.snic"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

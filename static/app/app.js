@@ -18,10 +18,25 @@ Date.prototype.Format = function (fmt) {
     for (var k in o)
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
+};
 
-angular.module("RoomManager", [])
-.controller("home", function($scope, $http){
+angular.module("RoomManager", ['ui.router'])
+    .config(function ($stateProvider, $urlRouterProvider,$locationProvider, $httpProvider , $logProvider) {
+        $urlRouterProvider.otherwise('/home');
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: '/static/views/home.html',
+                controller: 'HomeCtrl'
+            })
+    })
+    .controller("NavBarCtrl", function($scope, $window){
+        $scope.name =  'ssss';
+        $scope.getUserName = function(){
+            return $window.user.username;
+        };
+    })
+.controller("HomeCtrl", function($scope, $http){
         $scope.input = {};
         $scope.sort = 0;
         $scope.bkSort = 0;
