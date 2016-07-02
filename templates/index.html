@@ -12,7 +12,8 @@
     <link href="{% static "node_modules/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
     <script type="application/javascript">
         window.user = {
-                    "username": '{{ user.username }}'
+                    "username": '{{ user.username }}',
+                    "name": '{{ user.first_name }}'
                 };
 {#<div>当前登入: {{ user }}  <a style="float: right" href="accounts/logout?next=/">退出</a></div>#}
     </script>

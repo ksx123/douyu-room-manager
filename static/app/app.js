@@ -31,9 +31,8 @@ angular.module("RoomManager", ['ui.router'])
             })
     })
     .controller("NavBarCtrl", function($scope, $window){
-        $scope.name =  'ssss';
         $scope.getUserName = function(){
-            return $window.user.username;
+            return $window.user.name;
         };
     })
 .controller("HomeCtrl", function($scope, $http){
