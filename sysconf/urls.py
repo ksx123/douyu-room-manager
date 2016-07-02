@@ -21,7 +21,7 @@ from pages import views as page_views
 urlpatterns = [
     url(r'^accounts/login/$', auth_views.login),
     url(r'^accounts/logout$', auth_views.logout),
-    url(r'^admin/.*', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
-    url(r'^', page_views.index),
+    url(r'^$', page_views.index),
 ]
