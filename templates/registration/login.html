@@ -2,17 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load staticfiles %}
     <title>登入</title>
+    <link href="{% static "node_modules/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <style>
+        body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+    </style>
 </head>
 <body>
 
-<form method="post" style="width: 300px;margin: 150px auto;">
-    <h1>登入:</h1>
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="用户名"><br>
-    <input type="password" name="password" placeholder="密码"><br>
-    <button>Login</button>
-</form>
+<div class="container">
+
+    <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">登入</h2>
+        {% csrf_token %}
+        <label for="inputName" class="sr-only">Username</label>
+        <input type="text" id="inputName" class="form-control" name="username" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+    </form>
+
+</div>
+<!-- /container -->
 
 </body>
 </html>
